@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List Component should render correctly 1`] = `
+<div>
+  <label
+    for="new-item"
+  >
+    Novo item
+  </label>
+  <input
+    id="new-item"
+    placeholder="Novo item"
+    type="text"
+    value=""
+  />
+  <button>
+    Adicionar
+  </button>
+  <ul>
+    <li
+      data-testid="list-item"
+    >
+      Julia
+      <button>
+        Remover
+      </button>
+    </li>
+  </ul>
+</div>
+`;

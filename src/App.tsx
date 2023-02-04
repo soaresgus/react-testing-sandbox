@@ -1,29 +1,19 @@
-import { useState } from 'react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Albums } from './components/Albums';
+import { List } from './components/List';
+import { Posts } from './components/Posts';
+import { ListProvider } from './context/ListContext';
+
+const queryClient = new QueryClient();
 
 export function App() {
-  const [newItem, setNewItem] = useState('');
-  const [list, setList] = useState(['Diego', 'Rodz', 'Mayk']);
-
-  function addToList() {
-    setTimeout(() => {
-      setList((state) => [...state, newItem]);
-    }, 500);
-  }
-
   return (
-    <>
-      <input
-        type="text"
-        placeholder="Novo item"
-        value={newItem}
-        onChange={(event) => setNewItem(event.target.value)}
-      />
-      <button onClick={addToList}>Adicionar</button>
-      <ul>
-        {list.map((item) => (
-          <li key={item}>{item}</li>
-        ))}
-      </ul>
-    </>
+    <QueryClientProvider client={queryClient}>
+      <ListProvider>
+        <List initialItems={['Diego', 'Rodz', 'Mayk']} />
+        <Posts />
+        <Albums />
+      </ListProvider>
+    </QueryClientProvider>
   );
 }
